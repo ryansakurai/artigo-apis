@@ -1,0 +1,21 @@
+- introdução
+    - api = application program interface
+        - em portugues, interface de programação de aplicações
+    - enquanto uma interface gráfica (GUI) é criada para o uso de um usuário final, a API é criada para o uso de um sistema
+    - ou seja, é um modo de comunicação entre sistemas
+    - existem em qualquer contexto de desenvolvimento e em qualquer tipo de software
+    - as aplicações atuais só podem existir por causa da comunicação com outras aplicações
+- apis de sistema operacional
+- apis web
+    - rest api
+        - http 1.1
+            - métodos http
+    - end points
+        - url de um servidor
+        - é o que o serviço expõe
+        - APC
+            - address -> onde o serviço está hospedado
+            - binding -> como o serviço pode ser acessado
+            - contract -> o que pode ser visto no serviço
+    - tokens -> identificam usuários da api
+    - json
