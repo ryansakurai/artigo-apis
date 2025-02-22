@@ -1,21 +1,50 @@
 - introdução
     - api = application program interface
         - em portugues, interface de programação de aplicações
+    - explicar o que é uma interface
+        - abstração e encapsulamento
     - enquanto uma interface gráfica (GUI) é criada para o uso de um usuário final, a API é criada para o uso de um sistema
     - ou seja, é um modo de comunicação entre sistemas
-    - existem em qualquer contexto de desenvolvimento e em qualquer tipo de software
     - as aplicações atuais só podem existir por causa da comunicação com outras aplicações
-- apis de sistema operacional
-- apis web
-    - rest api
-        - http 1.1
+- tipos de api
+    - quando falamos de api, normalmente nos referimos a apis web
+    - porém existem em qualquer contexto de desenvolvimento e em qualquer tipo de software
+    - apis de sistema operacional
+    - apis de linguagens de programação
+    - apis de bibliotecas e frameworks
+    - exemplo do spotify
+- apis web/remotas
+    - motivos
+        - distância física
+        - processamento
+        - memória
+    - rest-> representational state transfer
+        - url -> universal resource locator
+            - quando acessamos um site, nosso navegador (cliente) usa o URL para fazer uma requisição a um servidor e ter acesso a um recurso: a página em que estamos. no caso do rest, o recurso é um JSON
+        - http
             - métodos http
-    - end points
-        - url de um servidor
-        - é o que o serviço expõe
-        - APC
-            - address -> onde o serviço está hospedado
-            - binding -> como o serviço pode ser acessado
-            - contract -> o que pode ser visto no serviço
-    - tokens -> identificam usuários da api
-    - json
+            - headers
+            - status
+                - 404
+            - argumentos
+        - requisitor para ser restful
+            - stateless
+                - o servidor não se lembra de nenhum cliente
+                - se quiser que o servidor se lembre, precisa mandar suas informações em todas as requisições
+            - arquitetura cliente-servidor
+        - recursos e coleções
+            - voltar ao exemplo do spotify
+            - endpoints
+        - crud
+            - creating
+                - post
+            - reading
+                - get
+                - corpo costuma ser um json -> javascript object notation
+            - updating
+                - put
+                - patch
+            - deleting
+                - delete
+        - tokens -> autenticação
+    - graphql
