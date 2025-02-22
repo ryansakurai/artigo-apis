@@ -6,6 +6,7 @@
     - enquanto uma interface gráfica (GUI) é criada para o uso de um usuário final, a API é criada para o uso de um sistema
     - ou seja, é um modo de comunicação entre sistemas
     - as aplicações atuais só podem existir por causa da comunicação com outras aplicações
+    - exemplo do spotify
 - tipos de api
     - quando falamos de api, normalmente nos referimos a apis web
     - porém existem em qualquer contexto de desenvolvimento e em qualquer tipo de software
