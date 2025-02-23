@@ -12,8 +12,34 @@ No Spotify, por exemplo, quando um desenvolvedor cria o botão de "play" no apli
 
 ## Tipos de API
 
+Quando falamos de APIs, normalmente nos referimos a APIs Web, que permitem a comunicação entre aplicações via internet. No entanto, as APIs estão presentes em qualquer contexto de desenvolvimento e em qualquer tipo de software, atuando como pontes entre componentes de um sistema. Abaixo, exploro alguns dos principais tipos:
+
+### APIs de Sistema Operacional
+
+Essas APIs permitem que aplicativos interajam com recursos do sistema operacional, como *hardware*, serviços de arquivo ou redes. No exemplo anterior usando o Spotify, o aplicativo utiliza a API do Android ou iOS para acessar o controle de áudio do dispositivo. A existência dessas APIs é a razão pela qual muitos programas podem ser independentes de sistema operacional: elas abstraem detalhes de implementação específicos de cada SO, permitindo que desenvolvedores criem aplicações compatíveis com múltiplas plataformas.
+
+### APIs de Linguagens de Programação
+
+Linguagens de programação oferecem APIs nativas para simplificar operações rotineiras na linguagem. Um exemplo é a Collections API do Java, que fornece estruturas de dados prontas, como listas (`ArrayList`, `LinkedList`), conjuntos (`HashSet`, `TreeSet`) e mapas (`HashMap`). Essas estruturas são acessadas por meio de interfaces padronizadas, permitindo que desenvolvedores manipulem dados sem se preocupar com detalhes de implementação. Por exemplo, ao usar a interface `List`, abstrai-se como os elementos são armazenados internamente. Isso garante flexibilidade: é possível alternar entre `ArrayList` e `LinkedList` sem alterar a lógica principal do programa.
+
+### APIs de Bibliotecas e Frameworks
+
+Bibliotecas e frameworks também disponibilizam APIs para simplificar problemas recorrentes. Um exemplo é a biblioteca React, que oferece funções e componentes pré-definidos (como `Fragment` e hooks) para construção de interfaces de usuário. No caso do Spotify, o botão de "play" pode ser criado usando a API de uma biblioteca gráfica, que encapsula a renderização visual e eventos de clique.
+
+### APIs Remotas
+
+São APIs acessíveis via rede, geralmente utilizando protocolos como HTTP. O Spotify, por exemplo, usa a API do Musixmatch para exibir letras de músicas em tempo real. As API web previamente citadas são um tipo de API remota e serão exploradas com mais profundidade a seguir.
+
+## APIs Web
+
 ## Referências
 
 1. [API // Dicionário do Programador - Youtube](https://youtu.be/vGuqKIRWosk?si=umEoamAHZRe0Otd4)
 
 2. [APIs for Beginners - How to use an API (Full Course / Tutorial) - Youtube](https://youtu.be/WXsD0ZgxjRw?si=zsrBGSIdyCh1_wgv)
+
+3. [API - Wikipedia](https://en.wikipedia.org/wiki/API)
+
+4. [API Collections em Java: fundamentos e implementação básica - DevMedia](https://www.devmedia.com.br/api-collections-em-java-fundamentos-e-implementacao-basica/28445)
+
+5. [Built-in React APIs - React](https://react.dev/reference/react/apis)
