@@ -1,11 +1,9 @@
 - introdução
 - tipos de api
 - apis web
-    - motivos
-        - distância física
-        - processamento
-        - memória
+    - soap
     - rest-> representational state transfer
+        - mais flexível e leve
         - url -> universal resource locator
             - quando acessamos um site, nosso navegador (cliente) usa o URL para fazer uma requisição a um servidor e ter acesso a um recurso: a página em que estamos. no caso do rest, o recurso é um JSON
         - http
@@ -33,5 +31,7 @@
                 - patch
             - deleting
                 - delete
-        - tokens -> autenticação
+        - openapi
     - graphql
+    - websocket
+    - webhooks

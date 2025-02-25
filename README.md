@@ -32,6 +32,30 @@ São APIs acessíveis via rede, geralmente utilizando protocolos como HTTP. O Sp
 
 ## APIs Web
 
+As APIs Web são interfaces que permitem a comunicação entre aplicações através da internet, utilizando protocolos como HTTP. Sua popularidade cresceu com a computação em nuvem, microsserviços e aplicações multiplataforma, que exigem interoperabilidade e escalabilidade. Para garantir a seguraça no uso dessas APIs, são frequentemente utilizados tokens de autenticação para controle de acesso e para previnir mal uso das APIs.
+
+Três motivos principais impulsionam sua adoção: delegação de processamento, que alivia a carga computacional nos dispositivos finais ao transferir tarefas complexas para o servidor; economia de memória, já que dados podem ser acessados sob demanda, reduzindo a necessidade de armazenamento local; e facilidade de integração, graças à padronização que simplifica a conexão entre sistemas heterogêneos.
+
+Dentre as tecnologias relacionadas, abordaremos SOAP, REST, GraphQL, WebSocket e Webhooks. Embora nem todas se enquadrem estritamente na definição técnica de APIs Web, todas estão interligadas no ecossistema moderno. Além disso, há variações no nível de abstração dos conceitos e em suas classificações.
+
+### SOAP
+
+O SOAP (Simple Object Access Protocol), ou Protocolo Simples de Acesso a Objetos, é um protocolo padronizado para troca de dados estruturados entre aplicações. Projetado para ser independente de plataforma e linguagem, ele usa XML para formatar mensagens e é majoritariamente usado através de HTTP, apesar de algumas aplicações mais antigas utilizarem outros protocolos.
+
+Ele é baseado em serviços e sua estrutura rígida é definida por um contrato formal chamado WSDL (Web Services Description Language), ou Linguagem de Descrição de Serviços Web, que descreve as operações disponíveis e os formatos de entrada/saída da API. Por exemplo, um serviço bancário pode usar WSDL para especificar como uma transferência deve ser solicitada, incluindo campos como valor, conta destino e autenticação.
+
+O SOAP se destaca em ambientes que exigem alta segurança e confiabilidade, como sistemas financeiros ou governamentais. Ele suporta padrões avançados de criptografia e transações ACID (Atomicidade, Consistência, Isolamento, Durabilidade), essenciais para operações críticas. Além disso, é utilizado em sistemas legados, onde a estabilidade e a adesão a regras bem-definidas são prioritárias.
+
+Apesar de sua robustez, o SOAP é criticado por sua verbosidade (devido ao XML) e complexidade, o que faz com que não seja tão amplamente usado atualmente. No entanto, em cenários onde a precisão e a segurança superam a necessidade de agilidade, ele permanece uma escolha relevante.
+
+### REST
+
+### GraphQL
+
+### WebSocket
+
+### Webhook
+
 ## Referências
 
 1. [API // Dicionário do Programador - Youtube](https://youtu.be/vGuqKIRWosk?si=umEoamAHZRe0Otd4)
@@ -43,3 +67,9 @@ São APIs acessíveis via rede, geralmente utilizando protocolos como HTTP. O Sp
 4. [API Collections em Java: fundamentos e implementação básica - DevMedia](https://www.devmedia.com.br/api-collections-em-java-fundamentos-e-implementacao-basica/28445)
 
 5. [Built-in React APIs - React](https://react.dev/reference/react/apis)
+
+6. [Top 6 Most Popular API Architecture Styles - YouTube](https://youtu.be/4vLxWqE94l4?si=dVwWvpkeA3E04J_5)
+
+7. [Difference Between REST API vs Web API vs SOAP API Explained - YouTube](https://youtu.be/2mqN7ZhDsUA?si=68YaT2LbSwbMZXGE)
+
+8. [REST vs SOAP | Differences between SOAP and Rest Web Services | NodeJS Training | Edureka - YouTube](https://youtu.be/_fq8Ye8kodA?si=rapL5smiCPF6WTan)
