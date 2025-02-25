@@ -32,7 +32,7 @@ São APIs acessíveis via rede, geralmente utilizando protocolos como HTTP. O Sp
 
 ## APIs Web
 
-As APIs Web são interfaces que permitem a comunicação entre aplicações através da internet, utilizando protocolos como HTTP. Sua popularidade cresceu com a computação em nuvem, microsserviços e aplicações multiplataforma, que exigem interoperabilidade e escalabilidade. Para garantir a seguraça no uso dessas APIs, são frequentemente utilizados tokens de autenticação para controle de acesso e para previnir mal uso das APIs.
+As APIs Web são interfaces que permitem a comunicação entre aplicações através da internet, utilizando protocolos como HTTP. Sua popularidade cresceu com a computação em nuvem, microsserviços e aplicações multiplataforma, que exigem interoperabilidade e escalabilidade. Endpoints são elementos fundamentais nesse contexto: trata-se de URIs (*Uniform Resource Identifier*), ou Identificador Uniforme de Recurso, que uma API expõe para acesso a recursos ou funcionalidades. Por exemplo, um endpoint como /musicas pode ser acessado para retornar uma lista de músicas. Para garantir a seguraça no uso dessas APIs, são frequentemente utilizados tokens de autenticação para controle de acesso e para previnir mal uso das APIs.
 
 Três motivos principais impulsionam sua adoção: delegação de processamento, que alivia a carga computacional nos dispositivos finais ao transferir tarefas complexas para o servidor; economia de memória, já que dados podem ser acessados sob demanda, reduzindo a necessidade de armazenamento local; e facilidade de integração, graças à padronização que simplifica a conexão entre sistemas heterogêneos.
 
@@ -72,6 +72,28 @@ Apesar de sua robustez, o SOAP é criticado por sua verbosidade (devido ao XML) 
 
 ### REST
 
+REST (*Representational State Transfer*), ou Transferência de Estado Representacional, é o tipo de API mais utilizado na atualidade, destacando-se pela flexibilidade e leveza em comparação a protocolos mais rígidos como o SOAP. Enquanto o SOAP depende de especificações formais, o REST segue princípios flexíveis, priorizando simplicidade e eficiência na comunicação entre sistemas.
+
+Sua arquitetura é centrada em recursos e coleções, entidades acessíveis por meio de URLs (tipos de URI). Por exemplo, ao acessar um endpoint como `https://api.com/musicas`, o cliente pode criar um novo recurso na coleção de músicas e, ao acessar `https://api.com/musicas/1234`, o cliente pode solicitar dados de uma música específica identificada pelo número 1234. Essas entidades são geralmente representadas em JSON (*JavaScript Object Notation*), ou Notação de Objeto Javascript, um formato leve, legível e fácil de processar.
+
+A comunicação em REST utiliza métodos HTTP para definir ações sobre os recursos, seguindo uma lógica intuitiva: `GET` recupera recursos, `POST` os cria, `PUT` os atualiza por completo, `PATCH` os modifica parcialmente e `DELETE` os remove. Para especificar como e o quê deve ser acessado, os URLs podem incluir parâmetros de caminho (ex.: /musicas/123, onde 123 especifica o ID da música) para identificar recursos específicos e parâmetros de query (ex.: /musicas?genero=metal), usados para filtrar, ordenar ou paginar resultados. Isso permite requisições precisas, como buscar músicas de um gênero específico ou limitar a quantidade de itens retornados. 
+
+Complementando os métodos e parâmetros, os `headers` HTTP transmitem metadados, como autenticação ou tipo de conteúdo. Enquanto isso, os códigos de status indicam resultados: 2xx para sucesso (como `200 OK`), 4xx para erros do cliente (como o famoso `404 Not Found`) e 5xx para falhas do servidor (como `500 Internal Server Error`). Esses códigos ajudam a identificar rapidamente problemas, como um usuário tentando acessar uma página inexistente.
+
+Para ser considerada RESTful, uma API deve seguir os seguintes princípios:
+
+- Arquitetura Cliente-Servidor: separação clara de responsabilidades entre cliente e servidor;
+- Stateless (Sem Estado): cada requisição deve ser autossuficiente, contendo todas as informações necessárias para seu processamento, sem que o servidor armazene contexto entre requisições;
+- Cacheabilidade: clientes ou intermediários podem reutilizar respostas anteriores para requisições idênticas, reduzindo a carga no servidor e melhorando o desempenho (isso deve ser especificado pelo servidor);
+- Sistema em Camadas: intermediários (como gateways e balanceadores de carga) podem atuar entre cliente e servidor sem afetar a comunicação, sem que o cliente precise saber disso;
+- Interface Uniforme: a interação entre cliente e servidor é padronizada, aderindo a quatro subprincípios:
+  - Identificação de Recursos em Requisições: cada recurso envolvido na interação deve ser identificado de maneira única por um URI, sendo conceitualmente distintos das representações retornadas ao cliente;
+  - Manipulação de Recurso Através de Representações: se um cliente possui uma representação de um recurso e seus metadados, ele tem informações suficientes para modificar ou excluir o recurso;
+  - Mensagens Autodescritivas: mensagens devem incluir informações suficientes para descrever como processá-las;
+  - Hipermídia como Motor do Estado de Aplicação (HATEOAS): tendo acessado um URI inicial da aplicação, o cliente deve podem acessar todos os recursos que precise através de links providos pelo servidor.
+
+Para facilitar a documentação e padronização de APIs REST, ferramentas como OpenAPI (antigo Swagger) são amplamente usadas. Elas permitem descrever endpoints, métodos e parâmetros em um formato estruturado, possibilitando gerar documentação, código, casos de teste, ect. Isso ajuda a reduzir erros e acelerar o desenvolvimento.
+
 ### GraphQL
 
 ### WebSocket
@@ -97,3 +119,13 @@ Apesar de sua robustez, o SOAP é criticado por sua verbosidade (devido ao XML) 
 8. [REST vs SOAP | Differences between SOAP and Rest Web Services | NodeJS Training | Edureka - YouTube](https://youtu.be/_fq8Ye8kodA?si=rapL5smiCPF6WTan)
 
 9. [What Is a SOAP API and How Does It Work? | Postman Blog](https://blog.postman.com/soap-api-definition/#:~:text=SOAP%20\(also%20known%20as%20Simple,text%2C%20JSON%2C%20and%20more.)
+
+10. [RESTful APIs in 100 Seconds // Build an API from Scratch with Node.js Express - YouTube](https://youtu.be/-MTSQjw5DrM?si=wqC1AaDuNdw6p7Zn)
+
+11. [What Is REST API? Examples And How To Use It: Crash Course System Design #3 - YouTube](https://youtu.be/-mN3VyJuCjM?si=4JbcaOw4D4fpREE8)
+
+12. [REST - Wikipedia](https://en.wikipedia.org/wiki/REST)
+
+13. [Fielding Dissertation: CHAPTER 5: Representational State Transfer (REST)](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+
+14. [OpenAPI Specification - Wikipedia](https://en.wikipedia.org/wiki/OpenAPI_Specification)
