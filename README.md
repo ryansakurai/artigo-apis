@@ -40,7 +40,29 @@ Dentre as tecnologias relacionadas, abordaremos SOAP, REST, GraphQL, WebSocket e
 
 ### SOAP
 
-O SOAP (Simple Object Access Protocol), ou Protocolo Simples de Acesso a Objetos, é um protocolo padronizado para troca de dados estruturados entre aplicações. Projetado para ser independente de plataforma e linguagem, ele usa XML para formatar mensagens e é majoritariamente usado através de HTTP, apesar de algumas aplicações mais antigas utilizarem outros protocolos.
+O SOAP (Simple Object Access Protocol), ou Protocolo Simples de Acesso a Objetos, é um protocolo padronizado para troca de dados estruturados entre aplicações. Projetado para ser independente de plataforma e linguagem, ele usa XML para formatar mensagens e é majoritariamente usado através de HTTP, apesar de algumas aplicações mais antigas utilizarem outros protocolos. A seguir está um exemplo de troca de mensagens SOAP:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <IsValidISBN10 xmlns="http://webservices.daehosting.com/ISBN">
+      <sISBN>0-19-852663-6</sISBN>
+    </IsValidISBN10>
+  </soap:Body>
+</soap:Envelope>
+```
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <m:IsValidISBN10Response xmlns:m="http://webservices.daehosting.com/ISBN">
+      <m:IsValidISBN10Result>true</m:IsValidISBN10Result>
+    </m:IsValidISBN10Response>
+  </soap:Body>
+</soap:Envelope>
+```
 
 Ele é baseado em serviços e sua estrutura rígida é definida por um contrato formal chamado WSDL (Web Services Description Language), ou Linguagem de Descrição de Serviços Web, que descreve as operações disponíveis e os formatos de entrada/saída da API. Por exemplo, um serviço bancário pode usar WSDL para especificar como uma transferência deve ser solicitada, incluindo campos como valor, conta destino e autenticação.
 
@@ -73,3 +95,5 @@ Apesar de sua robustez, o SOAP é criticado por sua verbosidade (devido ao XML) 
 7. [Difference Between REST API vs Web API vs SOAP API Explained - YouTube](https://youtu.be/2mqN7ZhDsUA?si=68YaT2LbSwbMZXGE)
 
 8. [REST vs SOAP | Differences between SOAP and Rest Web Services | NodeJS Training | Edureka - YouTube](https://youtu.be/_fq8Ye8kodA?si=rapL5smiCPF6WTan)
+
+9. [What Is a SOAP API and How Does It Work? | Postman Blog](https://blog.postman.com/soap-api-definition/#:~:text=SOAP%20\(also%20known%20as%20Simple,text%2C%20JSON%2C%20and%20more.)
