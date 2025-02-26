@@ -128,9 +128,88 @@ Accept: application/json
 }
 ```
 
-Para facilitar a documentação e padronização de APIs REST, ferramentas como OpenAPI (antigo Swagger) são amplamente usadas. Elas permitem descrever endpoints, métodos e parâmetros em um formato estruturado, possibilitando gerar documentação, código, casos de teste, ect. Isso ajuda a reduzir erros e acelerar o desenvolvimento.
+Para facilitar a documentação e padronização de APIs REST, ferramentas como OpenAPI (antigo Swagger) são amplamente usadas. Elas permitem descrever endpoints, métodos e parâmetros em um formato estruturado, possibilitando gerar documentação, código, casos de teste, etc. Isso ajuda a reduzir erros e acelerar o desenvolvimento.
 
 ### GraphQL
+
+O GraphQL é uma linguagem de consulta e runtime que transfere o controle dos dados para o cliente. Ele oferece uma alternativa flexível aos paradigmas tradicionais como REST e SOAP, especialmente em cenários onde os requisitos de dados são mais complexos. Sua principal vantagem reside na capacidade de o cliente definir exatamente quais dados deseja receber, eliminando problemas comuns em outras arquiteturas, como o *overfetching* (receber mais informações do que o necessário) e o *underfetching* (obter menos dados, exigindo requisições adicionais).  
+
+Em APIs REST, por exemplo, ao acessar um endpoint como `/musicas/1234`, o servidor retorna todos os campos da música, mesmo que o cliente precise apenas do título e do artista. Com o GraphQL, isso é evitado: a consulta especifica apenas os campos desejados, como `titulo` e `artista`, resultando em uma resposta enxuta. Além disso, o *underfetching* é resolvido com consultas aninhadas. Em vez de fazer múltiplas requisições para obter a música e seu album (como ocorreria em REST, com endpoints separados), o GraphQL permite buscar ambos em uma única requisição, incluindo a estrutura de relacionamento diretamente na query (consulta).  
+
+A eficiência de rede é outra vantagem significativa. Como as respostas são moldadas pelas consultas, há menos transferência de dados redundantes. O GraphQL opera através de um único endpoint (como `/graphql`), onde todas as operações são tratadas. Isso contrasta com a proliferação de endpoints em REST, cada um dedicado a um recurso específico.  
+
+No cerne do GraphQL está um sistema de tipos definido no servidor por meio de um esquema. Esse esquema descreve todos os recursos, campos, relações e operações permitidas, garantindo validação tanto em fase de desenvolvimento quanto em execução. A seguir está um exemplo de esquema e uma troca de mensagem entre cliente e servidor:
+
+```graphql
+type Query {
+  musica(id: ID!): Musica
+}
+
+type Musica {
+  id: ID!
+  titulo: String!
+  artista: Artista!
+  lancamento: Lancamento!
+  duracao: String!
+  generos: [String!]!
+}
+
+type Artista {
+  id: ID!
+  nome: String!
+  pais: String!
+  seguidores: Int!
+}
+
+type Lancamento {
+  id: ID!
+  nome: String!
+  tipo: String!
+  anoDeLancamento: Int!
+}
+```
+
+```graphql
+query {
+  musica(id: "123") {
+    titulo
+    duracao
+    artista {
+      nome
+      pais
+    }
+    lancamento {
+      nome
+      tipo
+      anoDeLancamento
+    }
+  }
+}
+```
+
+```json
+{
+  "data": {
+    "musica": {
+      "titulo": "Purity Weeps",
+      "duracao": "04:08",
+      "artista": {
+        "nome": "Invent Animate",
+        "pais": "EUA"
+      },
+      "lancamento": {
+        "nome": "Heavener",
+        "tipo": "Álbum",
+        "anoDeLancamento": 2023
+      }
+    }
+  }
+}
+```
+
+O versionamento é simplificado em comparação ao REST. Em vez de criar novas URLs (como `/v2/musicas`), o GraphQL permite adicionar novos campos ao esquema sem afetar consultas existentes. Campos obsoletos podem ser marcados como `@deprecated`, permanecendo acessíveis para compatibilidade, mas ocultos em documentações. Isso facilita a evolução da API sem rupturas.
+
+Entretanto, a flexibilidade tem custos. A curva de aprendizado é mais acentuada, exigindo familiaridade com conceitos como esquemas e *resolvers* (funções que conectam consultas aos dados). Além disso, consultas complexas podem sobrecarregar o servidor, já que a liberdade do cliente em solicitar dados aninhados ou profundos exige maior poder de processamento.
 
 ### WebSocket
 
