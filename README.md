@@ -46,9 +46,9 @@ O SOAP (Simple Object Access Protocol), ou Protocolo Simples de Acesso a Objetos
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <IsValidISBN10 xmlns="http://webservices.daehosting.com/ISBN">
-      <sISBN>0-19-852663-6</sISBN>
-    </IsValidISBN10>
+    <GetMusicaInfos xmlns="http://api.com/soap">
+      <musicaId>1234</musicaId>
+    </GetMusicaInfos>
   </soap:Body>
 </soap:Envelope>
 ```
@@ -57,9 +57,18 @@ O SOAP (Simple Object Access Protocol), ou Protocolo Simples de Acesso a Objetos
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <m:IsValidISBN10Response xmlns:m="http://webservices.daehosting.com/ISBN">
-      <m:IsValidISBN10Result>true</m:IsValidISBN10Result>
-    </m:IsValidISBN10Response>
+    <m:GetMusicaInfosResposta xmlns:m="http://api.com/soap">
+      <m:Musica>
+        <m:Titulo>Purity Weeps</m:Titulo>
+        <m:Artista>Invent Animate</m:Artista>
+        <m:Lancamento>Heavener</m:Lancamento>
+        <m:Duracao>04:08</m:Duracao>
+        <m:Generos>
+          <m:Genero>Metalcore</m:Genero>
+          <m:Genero>Metal Progressivo</m:Genero>
+        </m:Generos>
+      </m:Musica>
+    </m:GetMusicaInfosResposta>
   </soap:Body>
 </soap:Envelope>
 ```
@@ -91,6 +100,33 @@ Para ser considerada RESTful, uma API deve seguir os seguintes princípios:
   - Manipulação de Recurso Através de Representações: se um cliente possui uma representação de um recurso e seus metadados, ele tem informações suficientes para modificar ou excluir o recurso;
   - Mensagens Autodescritivas: mensagens devem incluir informações suficientes para descrever como processá-las;
   - Hipermídia como Motor do Estado de Aplicação (HATEOAS): tendo acessado um URI inicial da aplicação, o cliente deve podem acessar todos os recursos que precise através de links providos pelo servidor.
+
+A seguir está um exemplo de troca de mensagens REST:
+
+```http
+GET /musicas/1234 HTTP/1.1
+Host: api.com
+Accept: application/json
+```
+
+```json
+// HTTP/1.1 200 OK
+// Content-Type: application/json
+
+{
+  "id": "1234",
+  "titulo": "Purity Weeps",
+  "artista": "Invent Animate",
+  "lancamento": "Heavener",
+  "duracao": "04:08",
+  "generos": ["Metalcore", "Metal Progressivo"],
+  "_links": {
+    "self": { "href": "/musicas/1234" },
+    "album": { "href": "/lancamentos/heavener" },
+    "artista": { "href": "/artistas/4321" }
+  }
+}
+```
 
 Para facilitar a documentação e padronização de APIs REST, ferramentas como OpenAPI (antigo Swagger) são amplamente usadas. Elas permitem descrever endpoints, métodos e parâmetros em um formato estruturado, possibilitando gerar documentação, código, casos de teste, ect. Isso ajuda a reduzir erros e acelerar o desenvolvimento.
 
@@ -129,3 +165,7 @@ Para facilitar a documentação e padronização de APIs REST, ferramentas como 
 13. [Fielding Dissertation: CHAPTER 5: Representational State Transfer (REST)](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 
 14. [OpenAPI Specification - Wikipedia](https://en.wikipedia.org/wiki/OpenAPI_Specification)
+
+15. [GraphQL Explained in 100 Seconds - YouTube](https://youtu.be/eIQh02xuVw4?si=H0VpdCOQaes73XSs)
+
+16. [GraphQL | A query language for your API](https://graphql.org/)
