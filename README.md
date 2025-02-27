@@ -223,6 +223,14 @@ Entretanto, a flexibilidade tem custos. A curva de aprendizado é mais acentuada
 
 ### WebSocket
 
+Enquanto estilos como REST e GraphQL operam sobre HTTP com um modelo de requisição-resposta, o WebSocket oferece uma abordagem alternativa para cenários que exigem comunicação contínua e em tempo real entre cliente e servidor. Protocolos baseados em HTTP, por dependerem de requisições individuais, tornam-se ineficientes em casos como chats ao vivo e jogos multiplayer. Isso ocorre porque os sistemas precisariam recorrer a técnicas como *polling* (consultas periódicas ao servidor) ou *long polling* (mantendo requisições abertas até que haja uma resposta), o que consome recursos desnecessários e introduz latência.
+
+Embora o WebSocket seja um protocolo distinto, ele foi projetado para coexistir com HTTP. Ele utiliza a mesma porta (80 para HTTP não criptografado e 443 para HTTPS) e permitindo que firewalls e proxies intermediários tratem o tráfego sem problemas. Além disso, a conexão inicia-se com um handshake HTTP, onde o cliente envia uma requisição especial incluindo o cabeçalho `Upgrade: websocket`. Se o servidor aceitar, responde com o status `101 Switching Protocols`, convertendo a conexão para WebSocket, estabelecendo um canal de comunicação bidirecional, persistente e independente de HTTP entre cliente e servidor. Uma vez aberta a conexão, ambas as partes podem enviar dados a qualquer momento, sem a necessidade de repetir handshakes ou esperar por requisições.
+
+O WebSocket é um protocolo de camada baixa, o que significa que não impõe formatos específicos para os dados trafegados. Ao contrário de REST (que geralmente usa JSON) ou SOAP (baseado em XML), as mensagens podem ser enviadas como texto simples, binários ou até mesmo estruturas personalizadas. Essa flexibilidade permite adaptação a diversos cenários, mas também exige que desenvolvedores definam suas próprias convenções para interpretar os dados. Para simplificar o desenvolvimento, bibliotecas como Socket.IO (para JavaScript) abstraem detalhes técnicos, oferecem reconexão automática e suporte a fallbacks para HTTP em casos de incompatibilidade.  
+
+Dois exemplos emblemáticos de uso do WebSocket são os jogos agar.io e slither.io, que o utilizam para atualizações em tempo real. Em agar.io, cada movimento de um jogador é transmitido imediatamente para todos os demais, mantendo a sincronia do mapa. Já em slither.io, a posição da serpente e a coleta de itens são processadas sem atrasos, criando uma experiência fluida.  
+
 ### Webhook
 
 ## Referências
@@ -258,3 +266,9 @@ Entretanto, a flexibilidade tem custos. A curva de aprendizado é mais acentuada
 15. [GraphQL Explained in 100 Seconds - YouTube](https://youtu.be/eIQh02xuVw4?si=H0VpdCOQaes73XSs)
 
 16. [GraphQL | A query language for your API](https://graphql.org/)
+
+17. [WebSocket - Wikipedia](https://en.wikipedia.org/wiki/WebSocket)
+
+18. [WebSockets in 100 Seconds & Beyond with Socket.io - YouTube](https://youtu.be/1BfCnjr_Vjg?si=-8CYaAePGCv4GRm6)
+
+19/ [WebSocket // Dicionário do Programador - YouTube](https://youtu.be/T4unNrKogSA?si=kS-kAPV5LA5PGVmg)
