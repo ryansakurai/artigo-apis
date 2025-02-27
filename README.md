@@ -53,6 +53,8 @@ O SOAP (Simple Object Access Protocol), ou Protocolo Simples de Acesso a Objetos
 </soap:Envelope>
 ```
 
+---
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -109,10 +111,14 @@ Host: api.com
 Accept: application/json
 ```
 
-```json
-// HTTP/1.1 200 OK
-// Content-Type: application/json
+---
 
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+
+```json
 {
   "id": "1234",
   "titulo": "Purity Weeps",
@@ -169,6 +175,8 @@ type Lancamento {
 }
 ```
 
+---
+
 ```graphql
 query {
   musica(id: "123") {
@@ -186,6 +194,8 @@ query {
   }
 }
 ```
+
+---
 
 ```json
 {
