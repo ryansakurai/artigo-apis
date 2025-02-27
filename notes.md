@@ -1,8 +1,0 @@
-- introdução
-- tipos de api
-- apis web
-    - soap
-    - rest
-    - graphql
-    - websocket
-    - webhooks
