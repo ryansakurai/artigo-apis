@@ -18,13 +18,25 @@ Quando falamos de APIs, normalmente nos referimos a APIs web, que permitem a com
 
 Essas APIs permitem que aplicativos interajam com recursos do sistema operacional, como *hardware*, serviços de arquivo ou redes. No exemplo anterior usando o Spotify, o aplicativo utiliza a API do Android ou iOS para acessar o controle de áudio do dispositivo. A existência dessas APIs é a razão pela qual muitos programas podem ser independentes de sistema operacional: elas abstraem detalhes de implementação específicos de cada SO, permitindo que desenvolvedores criem aplicações compatíveis com múltiplas plataformas.
 
+[ ![Ilustração de API de SO](assets/image-000.jpeg) ](https://www.scaler.com/topics/nodejs/os-api-nodejs/)
+
+**Ilustração de uma API de Sistema Operacional**
+
 ### APIs de Linguagens de Programação
 
 Linguagens de programação oferecem APIs nativas para simplificar operações rotineiras na linguagem. Um exemplo é a Collections API do Java, que fornece estruturas de dados prontas, como listas (`ArrayList`, `LinkedList`), conjuntos (`HashSet`, `TreeSet`) e mapas (`HashMap`). Essas estruturas são acessadas por meio de interfaces padronizadas, permitindo que desenvolvedores manipulem dados sem se preocupar com detalhes de implementação. Por exemplo, ao usar a interface `List`, abstraem-se como os elementos são armazenados internamente. Isso garante flexibilidade: é possível alternar entre `ArrayList` e `LinkedList` sem alterar a lógica principal do programa.
 
+[ ![Ilustração da Collections API](assets/image-001.jpeg) ](https://medium.com/@mbanaee61/mastering-the-java-collections-framework-hierarchy-with-java-code-and-junit-testing-ab2eb87746ed)
+
+**Ilustração da Collections API, sendo que as interfaces (verde escuro) representam APIs**
+
 ### APIs de Bibliotecas e *Frameworks*
 
 Bibliotecas e *frameworks* também disponibilizam APIs para simplificar problemas recorrentes. Um exemplo é a biblioteca React, que oferece funções e componentes pré-definidos (como `Fragment` e *hooks*) para construção de interfaces de usuário. No caso do Spotify, o botão de *play* pode ser criado usando a API de uma biblioteca gráfica, que encapsula a renderização visual e eventos de clique.
+
+[ ![Funções do React](assets/image-002.jpeg) ](https://akcoding.com/how-many-hooks-are-in-react/)
+
+**Funções que a biblioteca React disponibiliza através de sua API**
 
 ### APIs Remotas
 
@@ -34,9 +46,17 @@ São APIs acessíveis via rede, geralmente utilizando protocolos como HTTP. O Sp
 
 As APIs web são interfaces que permitem a comunicação entre aplicações através da internet, utilizando protocolos como HTTP. Sua popularidade cresceu com a computação em nuvem, microsserviços e aplicações multiplataforma, que exigem interoperabilidade e escalabilidade. *Endpoints* são elementos fundamentais nesse contexto: trata-se de URIs (*Uniform Resource Identifier*), ou Identificador Uniforme de Recurso, que uma API expõe para acesso a recursos ou funcionalidades. Por exemplo, um *endpoint* como `/musicas` pode ser acessado para retornar uma lista de músicas. Para garantir a seguraça no uso dessas APIs, são frequentemente utilizados *tokens* de autenticação para controle de acesso e para previnir mal uso das APIs.
 
+[ ![Ilustração de APIs web](assets/image-003.jpeg) ](https://www.akamai.com/pt/glossary/what-are-api-security-risks)
+
+**Ilustração do funcionamento de uma API web**
+
 Três motivos principais impulsionam sua adoção: delegação de processamento, que alivia a carga computacional nos dispositivos finais ao transferir tarefas complexas para o servidor; economia de memória, já que dados podem ser acessados sob demanda, reduzindo a necessidade de armazenamento local; e facilidade de integração, graças à padronização que simplifica a conexão entre sistemas heterogêneos.
 
 Dentre as tecnologias relacionadas, abordaremos SOAP, REST, GraphQL, WebSocket e Webhook. Embora nem todas se enquadrem estritamente na definição técnica de APIs Web, todas tem participação e estão interligadas no ecossistema moderno. Além disso, há variações no nível de abstração dos conceitos e em suas classificações.
+
+[ ![Estilos de APIs](assets/image-004.jpeg) ](https://youtu.be/4vLxWqE94l4?si=Yfm2Ydmhk1J25MS6)
+
+**Estilos de APIs que serão abordadas**
 
 ### SOAP
 
