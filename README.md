@@ -46,17 +46,13 @@ São APIs acessíveis via rede, geralmente utilizando protocolos como HTTP. O Sp
 
 As APIs web são interfaces que permitem a comunicação entre aplicações através da internet, utilizando protocolos como HTTP. Sua popularidade cresceu com a computação em nuvem, microsserviços e aplicações multiplataforma, que exigem interoperabilidade e escalabilidade. *Endpoints* são elementos fundamentais nesse contexto: trata-se de URIs (*Uniform Resource Identifier*), ou Identificador Uniforme de Recurso, que uma API expõe para acesso a recursos ou funcionalidades. Por exemplo, um *endpoint* como `/musicas` pode ser acessado para retornar uma lista de músicas. Para garantir a seguraça no uso dessas APIs, são frequentemente utilizados *tokens* de autenticação para controle de acesso e para previnir mal uso das APIs.
 
-[ ![Ilustração de APIs web](assets/image-003.jpeg) ](https://www.akamai.com/pt/glossary/what-are-api-security-risks)
-
-**Ilustração do funcionamento de uma API web**
-
 Três motivos principais impulsionam sua adoção: delegação de processamento, que alivia a carga computacional nos dispositivos finais ao transferir tarefas complexas para o servidor; economia de memória, já que dados podem ser acessados sob demanda, reduzindo a necessidade de armazenamento local; e facilidade de integração, graças à padronização que simplifica a conexão entre sistemas heterogêneos.
 
 Dentre as tecnologias relacionadas, abordaremos SOAP, REST, GraphQL, WebSocket e Webhook. Embora nem todas se enquadrem estritamente na definição técnica de APIs Web, todas tem participação e estão interligadas no ecossistema moderno. Além disso, há variações no nível de abstração dos conceitos e em suas classificações.
 
-[ ![Estilos de APIs](assets/image-004.jpeg) ](https://youtu.be/4vLxWqE94l4?si=Yfm2Ydmhk1J25MS6)
+[ ![Ilustração de APIs web](assets/image-003.jpeg) ](https://www.akamai.com/pt/glossary/what-are-api-security-risks)
 
-**Estilos de APIs que serão abordadas**
+**Ilustração do funcionamento de uma API web**
 
 ### SOAP
 
