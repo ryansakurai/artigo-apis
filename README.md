@@ -148,7 +148,7 @@ Content-Type: application/json
   "generos": ["Metalcore", "Metal Progressivo"],
   "_links": {
     "self": { "href": "/musicas/1234" },
-    "album": { "href": "/lancamentos/heavener" },
+    "lancamento": { "href": "/lancamentos/heavener" },
     "artista": { "href": "/artistas/4321" }
   }
 }
