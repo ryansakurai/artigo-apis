@@ -105,6 +105,10 @@ Sua arquitetura é centrada em recursos e coleções, entidades acessíveis por 
 
 A comunicação em REST utiliza métodos HTTP para definir ações sobre os recursos, seguindo uma lógica intuitiva: `GET` recupera recursos, `POST` os cria, `PUT` os atualiza por completo, `PATCH` os modifica parcialmente e `DELETE` os remove. Para especificar como e o quê deve ser acessado, os URLs podem incluir parâmetros de caminho (ex.: `/musicas/123`, onde `123` especifica o ID da música) para identificar recursos específicos e parâmetros de consulta (ex.: `/musicas?genero=metal`, onde `genero=metal` filtra as músicas por gênero), usados para filtrar, ordenar ou paginar resultados.
 
+[ ![CRUD e Métodos HTTP](assets/image-004.jpeg) ](https://medium.com/geekculture/crud-operations-explained-2a44096e9c88)
+
+**Relação entre as operações de CRUD e os métodos HTTP**
+
 Complementando os métodos e parâmetros, os *headers* (cabeçalhos) HTTP transmitem metadados, como autenticação ou tipo de conteúdo. Enquanto isso, os códigos de status indicam resultados: 2xx para sucesso (como `200 OK`), 4xx para erros do cliente (como o famoso `404 Not Found`) e 5xx para falhas do servidor (como `500 Internal Server Error`). Esses códigos ajudam a identificar rapidamente problemas, como um usuário tentando acessar uma página inexistente.
 
 Para ser considerada RESTful, uma API deve seguir os seguintes princípios:
@@ -154,9 +158,13 @@ Para facilitar a documentação e padronização de APIs REST, ferramentas como 
 
 ### GraphQL
 
-O GraphQL é uma linguagem de consulta e *runtime* (ambiente de execução) que transfere o controle dos dados para o cliente. Ele oferece uma alternativa flexível aos paradigmas tradicionais como REST e SOAP, especialmente em cenários onde os requisitos de dados são mais complexos. Sua principal vantagem reside na capacidade de o cliente definir exatamente quais dados deseja receber, eliminando problemas comuns em outras arquiteturas, como o *overfetching* (receber mais informações do que o necessário) e o *underfetching* (obter menos dados, exigindo requisições adicionais).  
+O GraphQL é uma linguagem de consulta e *runtime* (ambiente de execução) que transfere o controle dos dados para o cliente. Ele oferece uma alternativa flexível aos paradigmas tradicionais como REST e SOAP, especialmente em cenários onde os requisitos de dados são mais complexos. Sua principal vantagem reside na capacidade de o cliente definir exatamente quais dados deseja receber, eliminando problemas comuns em outras arquiteturas, como o *overfetching* (receber mais informações do que o necessário) e o *underfetching* (obter menos dados, exigindo requisições adicionais).
 
-Em APIs REST, por exemplo, ao acessar um *endpoint* como `/musicas/1234`, o servidor retorna todos os campos da música, mesmo que o cliente precise apenas do título e do artista. Com o GraphQL, isso é evitado: a consulta especifica apenas os campos desejados, como titulo e artista, resultando em uma resposta enxuta. Além disso, o *underfetching* é resolvido com consultas aninhadas. Em vez de fazer múltiplas requisições para obter a música e seu álbum (como ocorreria em REST, com *endpoints* separados), o GraphQL permite buscar ambos em uma única requisição, incluindo a estrutura de relacionamento diretamente na *query* (consulta).  
+Em APIs REST, por exemplo, ao acessar um *endpoint* como `/musicas/1234`, o servidor retorna todos os campos da música, mesmo que o cliente precise apenas do título e do artista. Com o GraphQL, isso é evitado: a consulta especifica apenas os campos desejados, como titulo e artista, resultando em uma resposta enxuta. Além disso, o *underfetching* é resolvido com consultas aninhadas. Em vez de fazer múltiplas requisições para obter a música e seu álbum (como ocorreria em REST, com *endpoints* separados), o GraphQL permite buscar ambos em uma única requisição, incluindo a estrutura de relacionamento diretamente na *query* (consulta).
+
+[ ![REST vs GraphQL](assets/image-005.jpeg) ](https://www.wallarm.com/what/what-is-graphql-definition-with-example)
+
+**Comparação entre REST e GraphQL**
 
 A eficiência de rede é outra vantagem significativa. Como as respostas são moldadas pelas consultas, há menos transferência de dados redundantes. O GraphQL opera através de um único *endpoint* (como `/graphql`), onde todas as operações são tratadas. Isso contrasta com a proliferação de *endpoints* em REST, cada um dedicado a um recurso específico.  
 
@@ -239,15 +247,27 @@ Enquanto estilos como REST e GraphQL operam sobre HTTP com um modelo de requisi�
 
 Embora o WebSocket seja um protocolo distinto, ele foi projetado para coexistir com HTTP. Ele utiliza a mesma porta (`80` para HTTP não criptografado e `443` para HTTPS) e permitindo que *firewalls* e *proxies* intermediários tratem o tráfego sem problemas. Além disso, a conexão inicia-se com um *handshake* HTTP, onde o cliente envia uma requisição especial incluindo o cabeçalho `Upgrade: websocket`. Se o servidor aceitar, responde com o status `101 Switching Protocols`, convertendo a conexão para WebSocket, estabelecendo um canal de comunicação bidirecional, persistente e independente de HTTP entre cliente e servidor. Uma vez aberta a conexão, ambas as partes podem enviar dados a qualquer momento, sem a necessidade de repetir *handshakes* ou esperar por requisições.
 
+[ ![WebSocket vs HTTP](assets/image-006.jpeg) ](https://apidog.com/pt/blog/what-is-websocket-and-how-it-works/)
+
+**Comparação entre conexão WebSocket e conexão HTTP**
+
 O WebSocket é um protocolo de camada baixa, o que significa que não impõe formatos específicos para os dados trafegados. Ao contrário de REST (que geralmente usa JSON) ou SOAP (baseado em XML), as mensagens podem ser enviadas como texto simples, binários ou até mesmo estruturas personalizadas. Essa flexibilidade permite adaptação a diversos cenários, mas também exige que desenvolvedores definam suas próprias convenções para interpretar os dados. Para simplificar o desenvolvimento, bibliotecas como Socket.IO (para JavaScript) abstraem detalhes técnicos, oferecem reconexão automática e suporte a *fallbacks* para HTTP em casos de incompatibilidade.  
 
-Dois exemplos emblemáticos de uso do WebSocket são os jogos agar.io e slither.io, que o utilizam para atualizações em tempo real. Em agar.io, cada movimento de um jogador é transmitido imediatamente para todos os demais, mantendo a sincronia do mapa. Já em slither.io, a posição da serpente e a coleta de itens são processadas sem atrasos, criando uma experiência fluida.  
+Dois exemplos emblemáticos de uso do WebSocket são os jogos agar.io e slither.io, que o utilizam para atualizações em tempo real. Em agar.io, cada movimento de um jogador é transmitido imediatamente para todos os demais, mantendo a sincronia do mapa. Já em slither.io, a posição da serpente e a coleta de itens são processadas sem atrasos, criando uma experiência fluida.
+
+[ ![Agar.io](assets/image-007.jpeg) ](https://youtu.be/D4toiGwMrYA?si=2-vRUoZ6-rbvopIZ)
+
+**Jogo de navegador Agar.io**
 
 ### Webhook
 
 Enquanto APIs como REST e GraphQL operam em um modelo síncrono de requisição-resposta, e o WebSocket mantém uma conexão bidirecional contínua, os Webhooks oferecem uma abordagem complementar para cenários que demandam notificações assíncronas e *event-driven* (orientadas a evento). Imagine um serviço de *e-commerce* onde o sistema precisa atualizar o status de um pedido assim que o pagamento via PIX for confirmado. Utilizar técnicas como *polling* (consultas periódicas ao servidor) ou *long polling* (manter uma requisição aberta até que haja uma resposta) seria possível, mas ineficiente: geraria tráfego redundante e consumiria recursos do servidor e do cliente desnecessariamente. É nesse contexto que os Webhooks se destacam como solução.
 
 Os Webhooks funcionam como *callbacks* HTTP, mecanismos que permitem a um servidor notificar automaticamente um cliente quando um evento específico ocorre. Para isso, o cliente registra previamente um URL de *callback* em um *endpoint* da API, informando ao servidor para onde enviar a notificação. Quando o evento desejado acontece, o servidor dispara uma requisição HTTP (geralmente `POST`) para o URL registrado, enviando dados relevantes sobre o evento. Essa abordagem elimina a necessidade de consultas repetitivas, transferindo a iniciativa da comunicação para o servidor. Por isso, os Webhooks são frequentemente chamados de APIs reversas ou APIs de *push*, em contraste com as APIs tradicionais baseadas em *polling*, onde o cliente sempre inicia a interação.
+
+[ ![Polling vs Webhook](assets/image-008.jpeg) ](https://www.zoho.com/blog/assist/webhooks-what-are-they-and-how-are-they-used.html)
+
+**Comparação entre *polling* e Webhooks**
 
 Um exemplo conhecido é o GitHub, que utiliza Webhooks para notificar sistemas externos sobre eventos em repositórios, como *push*, *pull request* ou *merge*. Ao configurar um Webhook, um desenvolvedor pode fazer com que cada *push* no repositório dispare uma requisição para um serviço de *deploy*, iniciando automaticamente a implantação da aplicação em produção. Essa integração contínua exemplifica como os Webhooks conectam sistemas heterogêneos de maneira desacoplada, permitindo que fluxos complexos sejam automatizados com mínimo esforço.
 
